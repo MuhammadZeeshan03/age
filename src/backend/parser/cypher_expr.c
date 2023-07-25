@@ -42,6 +42,7 @@
 #include "parser/parse_relation.h"
 #include "utils/builtins.h"
 #include "utils/float.h"
+
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
@@ -210,7 +211,7 @@ static Node *transform_A_Const(cypher_parsestate *cpstate, A_Const *ac)
 {
     ParseState *pstate = (ParseState *)cpstate;
     ParseCallbackState pcbstate;
-
+    
     Datum d = (Datum)0;
     bool is_null = false;
     Const *c;

@@ -1334,14 +1334,7 @@ static Query *transform_cypher_unwind(cypher_parsestate *cpstate,
         pnsi = transform_prev_cypher_clause(cpstate, clause->prev, true);
         rtindex = list_length(pstate->p_rtable);
         Assert(rtindex == 1); // rte is the first RangeTblEntry in pstate
-        if (rtindex != 1)
-        {
-            ereport(ERROR,
-                    (errcode(ERRCODE_DATATYPE_MISMATCH),
-                     errmsg("invalid value for rtindex")));
-        }
-
-        query->targetList = expandNSItemAttrs(pstate, pnsi, 0, true, -1);
+        query->targetList = expandNSItemAttrs(pstate, pnsi, 0,true, -1);
     }
 
     target_syntax_loc = exprLocation((const Node *) self->target);
